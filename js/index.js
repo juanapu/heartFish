@@ -19,6 +19,15 @@ var ane;
 //果实
 var fruit;
 
+//大鱼
+var mom ;
+
+//鼠标位置
+var mx, my;
+
+//小鱼
+var baby;
+
 function game() {
     init();
     lastTime = Date.now();
@@ -46,12 +55,26 @@ function init() {
     fruit = new fruitObj();
     fruit.init();
 
+    //大鱼
+    mom = new momObj();
+    mom.init();
+
+    //鼠标位置初始化为画布中间
+    mx = canWidth * 0.5;
+    my = canHeight * 0.5;
+    //鼠标监听
+    can1.addEventListener("mousemove", onMouseMove, false);
+
+    //小鱼
+    baby = new babyObj();
+    baby.init();
 }
 
 function gameLoop() {
     requestAnimFrame(gameLoop);
     var now = Date.now();
     deltaTime = now - lastTime;
+    if(deltaTime > 40) deltaTime = 40;
     lastTime = now;
     //绘制背景,如果只在初始化的时候绘制，那么果实运动的轨迹会在背景上保存
     ctx2.drawImage(bgPic, 0, 0, canWidth, canHeight);
@@ -61,8 +84,21 @@ function gameLoop() {
     fruitMonitor();
     fruit.draw();
 
+    ctx1.clearRect(0,0,canWidth,canHeight);
+    //绘制大鱼
+    mom.draw();
+    //大鱼吃果实
+    momFruitCollision();
+
+    //绘制小鱼
+    baby.draw();
 }
 
-
+function onMouseMove(e) {
+    if(e.offsetX || e.layerX) {
+        mx = e.offsetX == undefined ? e.layerX : e.offsetX;
+        my = e.offsetY == undefined ? e.layerY : e.offsetY;
+    }
+}
 
 window.onload = game();
