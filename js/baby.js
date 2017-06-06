@@ -7,15 +7,25 @@ var babyObj = function () {
     this.angle;
     this.babyEye = new Image();
     this.babyBody = new Image();
-    this.babyTail = new Image();
+    this.babyTail = [];
+
+    this.babyTailTimer;
+    this.babyTailCount;
 }
 babyObj.prototype.init = function () {
     this.x = canWidth * 0.5 - 50;
     this.y = canHeight * 0.5 + 50;
     this.angle = 0;
+    this.babyTailTimer = 0;
+    this.babyTailCount = 0;
     this.babyEye.src = "./img/babyEye0.png";
     this.babyBody.src = "./img/babyFade0.png";
-    this.babyTail.src = "./img/babyTail0.png";
+    //小鱼尾巴
+    for(var i = 0; i < 8; i++) {
+        this.babyTail[i] = new Image();
+        this.babyTail[i].src = "./img/babyTail" + i + ".png";
+    }
+    // this.babyTail.src = "./img/babyTail0.png";
 }
 babyObj.prototype.draw = function () {
     this.x = lerpDistance(mom.x, this.x, 0.96);
@@ -27,10 +37,19 @@ babyObj.prototype.draw = function () {
     //lerp angle
     this.angle = lerpAngle(beta, this.angle, 0.6);
 
+    //babyTile
+    this.babyTailTimer += deltaTime;
+    if(this.babyTailTimer > 50) {
+        this.babyTailCount = (this.babyTailCount + 1) % 8;
+        this.babyTailTimer %= 50;
+    }
+
     ctx1.save();
     ctx1.translate(this.x, this.y);
     ctx1.rotate(this.angle);
-    ctx1.drawImage(this.babyTail, -this.babyTail.width * 0.5 + 25, -this.babyTail.height * 0.5);
+
+    var babyTileCount = this.babyTailCount;
+    ctx1.drawImage(this.babyTail[babyTileCount], -this.babyTail[babyTileCount].width * 0.5 + 25, -this.babyTail[babyTileCount].height * 0.5);
     ctx1.drawImage(this.babyBody, -this.babyBody.width * 0.5, -this.babyBody.height * 0.5);
     ctx1.drawImage(this.babyEye, -this.babyEye.width * 0.5, -this.babyEye.height * 0.5);
     ctx1.restore();

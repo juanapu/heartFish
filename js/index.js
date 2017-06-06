@@ -68,6 +68,7 @@ function init() {
     //小鱼
     baby = new babyObj();
     baby.init();
+
 }
 
 function gameLoop() {
