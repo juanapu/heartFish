@@ -23,3 +23,21 @@ body {
 #canvas2 {
     z-index: 0;
 }
+#again {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top:100px;
+    width: 100px;
+    background-color: red;
+    font-size: 24px;
+    color: #000;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: -50px;
+    box-shadow: 5px 5px 5px black;
+    z-index: 3;
+    display: none;
+    cursor:pointer;
+    font-weight:bold;
+}
