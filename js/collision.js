@@ -16,7 +16,7 @@ function momFruitCollision() {
                     if(fruit.fruitType[i] == "blue") {
                         data.double = 2;
                     }
-                    wave.born(fruit.x[i], fruit.y[i]);
+                    wave.born(fruit.x[i], fruit.y[i], "white");
                 }
             }
         }
@@ -33,7 +33,7 @@ function momBabyCollision() {
             mom.bigBodyCount = 0;
             //score update
             data.addScore();
-
+            wave.born(mom.x, mom.y, "orange");
         }
     }
 }
