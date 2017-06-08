@@ -6,6 +6,7 @@ var fruitObj = function () {
     this.alive = []; //果实是否可见，为true则绘制果实。
     this.x = []; //果实的坐标
     this.y = [];
+    this.aneNo = []; // 果实对应的海葵
     this.l = []; //果实的尺寸l*l
     this.spd = []; //果实移动和生长的速度
     this.fruitType = []; //果实类型，blue、yellow
@@ -18,6 +19,7 @@ fruitObj.prototype.init = function () {
         this.alive[i] = false;
         this.x[i] = 0;
         this.y[i] = 0;
+        this.aneNo[i] = 0;
         this.l[i] = 0;
         this.spd[i] = Math.random() * 0.017 + 0.003;
         this.fruitType[i] = "";
@@ -39,6 +41,8 @@ fruitObj.prototype.draw = function () {
             }
 
             if(this.l[i] <= 14) {
+                this.x[i] = ane.headX[this.aneNo[i]];
+                this.y[i] = ane.headY[this.aneNo[i]];
                 this.l[i] += this.spd[i] * deltaTime;
             } else {
                 this.y[i] -= this.spd[i] * 7 * deltaTime;
@@ -54,9 +58,7 @@ fruitObj.prototype.draw = function () {
 
 //随机一个海葵用来生产果实
 fruitObj.prototype.born = function (i) {
-    var aneId = Math.floor(Math.random() * ane.num);
-    this.x[i] = ane.x[aneId];
-    this.y[i] = canHeight - ane.len[aneId];
+    this.aneNo[i] = Math.floor(Math.random() * ane.num);
     this.l[i] = 0;
     this.alive[i] = true;
 

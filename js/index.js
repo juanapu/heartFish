@@ -37,6 +37,10 @@ var data;
 //wave
 var wave;
 
+//dust
+var dust;
+var dustPic = [];
+
 function game() {
     init();
     lastTime = Date.now();
@@ -87,6 +91,14 @@ function init() {
     //wave
     wave = new waveObj();
     wave.init();
+
+    //dust
+    for(var i = 0; i < 7; i++) {
+        dustPic[i] = new Image();
+        dustPic[i].src = "./img/dust" + i + ".png";
+    }
+    dust = new dustObj();
+    dust.init();
 }
 
 function gameLoop() {
@@ -119,6 +131,9 @@ function gameLoop() {
 
     //绘制wave
     wave.draw();
+
+    //绘制dust
+    dust.draw();
 
 }
 

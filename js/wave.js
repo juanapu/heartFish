@@ -56,7 +56,6 @@ waveObj.prototype.born = function (x, y, color) {
             this.x[i] = x;
             this.y[i] = y;
             this.type[i] = color;
-            console.log("born");
             return;
         }
     }
