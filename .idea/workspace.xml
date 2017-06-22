@@ -245,7 +245,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../myStory" />
     <property name="nodejs_interpreter_path" value="D:/sw/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
@@ -331,12 +331,12 @@
       <workItem from="1496653578562" duration="13646000" />
       <workItem from="1496749368723" duration="8983000" />
       <workItem from="1496811247838" duration="13829000" />
-      <workItem from="1496898686588" duration="5317000" />
+      <workItem from="1496898686588" duration="5924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41775000" />
+    <option name="totallyTimeSpent" value="42382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
